@@ -1,7 +1,8 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
-class Staff extends Member{}
-import  Member  from './membre.model.js';
+import Member from "./membre.model.js";
+class Staff extends  Member 
+{}
 
 Staff.init({
     staff_id:{
@@ -22,6 +23,7 @@ Staff.init({
     }
 },{
     sequelize,
-    tableName:"staff"
+    tableName:"staff",
+    timestamps :false
 })
 export default Staff;

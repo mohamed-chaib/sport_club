@@ -1,5 +1,5 @@
 // joueur.model.js
-import { DataTypes } from "sequelize";
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
 import Member from "./membre.model.js";
 
@@ -32,6 +32,7 @@ Joueur.init(
   {
     sequelize,
     tableName: "joueur",
+    timestamps:false
   }
 );
 

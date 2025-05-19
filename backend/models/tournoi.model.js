@@ -17,7 +17,9 @@ Tournoi.init({
     }
 },{
     sequelize,
-    tableName : 'tournoi'
+    tableName : 'tournoi',
+    timestamps:false
+
 })
 
 

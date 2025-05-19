@@ -6,6 +6,8 @@ class Visiteur extends Model{}
 
 Visiteur.init({},{
     sequelize,
-    tableName : 'visiteur'
+    tableName : 'visiteur',
+    timestamps:false
+
 })
 export default Visiteur;

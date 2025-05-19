@@ -17,6 +17,8 @@ Stade.init({
     }
 },{
     sequelize,
-    tableName:"stade"
+    tableName:"stade",
+    timestamps:false
+
 })
 export default Stade;

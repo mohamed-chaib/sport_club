@@ -1,7 +1,9 @@
 import express  from 'express'
-import Member from '../models/membre.model.js';
- 
+import {login,logout} from '../controllers/membre.controller.js';
+
 const router = express.Router()
 
-router.get('/login',Member.login)
+router.get('/login', login)
+router.post('/logout', logout)
+
 export default router;

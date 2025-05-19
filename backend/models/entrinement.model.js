@@ -17,6 +17,8 @@ Entrinement.init({
     }
 },{
     sequelize,
-    tableName:"entrinement"
+    tableName:"entrinement",
+    timestamps:false
+
 })
 export default Entrinement;

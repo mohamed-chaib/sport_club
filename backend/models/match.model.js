@@ -18,7 +18,9 @@ Match.init({
     }
 },{
     sequelize,
-    tableName : 'match'
+    tableName : 'match',
+    timestamps:false
+
 })
 
 

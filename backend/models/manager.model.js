@@ -1,6 +1,6 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
-import  Member  from './membre.model.js';
+import Member from "./membre.model.js";
 
 class Manager extends Member{}
 Manager.init({
@@ -14,7 +14,8 @@ Manager.init({
     }
 },{
     sequelize,
-    tableName : 'manager'
+    tableName : 'manager',
+    timestamps:false
 })
 
 

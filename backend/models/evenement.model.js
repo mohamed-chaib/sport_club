@@ -1,28 +1,36 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
 class Evenement extends Model{
-    static commonAttributes ={
-        type:{
-            type : DataTypes.STRING,
-            allowNull: false
-        },
-        date:{
-            type : DataTypes.DATE,
-            allowNull : false
-        },
-        adversaire:{
-            type : DataTypes.STRING,
-            allowNull : false
-        }
-
-    }
+   
 }
 Evenement.init({
-    ...Evenement.commonAttributes
+    nom:{
+        type : DataTypes.STRING,
+        allowNull: false
+    },
+    type:{
+        type : DataTypes.STRING,
+        allowNull: false
+    },
+    date:{
+        type : DataTypes.DATE,
+        allowNull : false
+    },
+    adversaire:{
+        type : DataTypes.STRING,
+        allowNull : false
+    },
+    score:{
+        type : DataTypes.INTEGER,
+        allowNull : false
+    }
+    
 },
 {
     sequelize,
-    tableName:"evenement"
+    tableName:"evenement",
+    timestamps:false
+
 })
 
 

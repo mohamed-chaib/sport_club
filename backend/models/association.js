@@ -67,19 +67,21 @@ const setupAssociations = () => {
     Manager.hasMany(Coache, { foreignKey: 'id_manager' });
 
   // member heritage
-    Member.hasOne(Admin, { foreignKey: 'admin_id' });
+    Member.hasOne(Admin, { foreignKey: 'admin_id' ,  onDelete: 'CASCADE'});
     Admin.belongsTo(Member, { foreignKey: 'admin_id' });
 
-    Member.hasOne(Manager, { foreignKey: 'manager_id' });
+    Member.hasOne(Manager, { foreignKey: 'manager_id' ,  onDelete: 'CASCADE'});
     Manager.belongsTo(Member, { foreignKey: 'manager_id' });
 
-    Member.hasOne(Coache, { foreignKey: 'coache_id' });
+    Member.hasOne(Coache, { foreignKey: 'coache_id' ,  onDelete: 'CASCADE'});
     Coache.belongsTo(Member, { foreignKey: 'coache_id' });
 
-    Member.hasOne(Staff, { foreignKey: 'staff_id' });
+    Member.hasOne(Staff, { foreignKey: 'staff_id' ,  onDelete: 'CASCADE'  
+    });
     Staff.belongsTo(Member, { foreignKey: 'staff_id' });
 
-    Member.hasOne(Joueur, { foreignKey: 'joueur_id' });
+    Member.hasOne(Joueur, { foreignKey: 'joueur_id',  onDelete: 'CASCADE' 
+    });
     Joueur.belongsTo(Member, { foreignKey: 'joueur_id' });
 
     

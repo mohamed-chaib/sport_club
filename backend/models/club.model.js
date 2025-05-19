@@ -20,7 +20,8 @@ Club.init({
     },
 },{
     sequelize,
-    tableName:"club"
+    tableName:"club",
+    timestamps:false
 })
 
 // Association 

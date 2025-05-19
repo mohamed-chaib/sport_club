@@ -22,7 +22,9 @@ Equipe.init({
     },
 },{
     sequelize,
-    tableName:"equipe"
+    tableName:"equipe",
+    timestamps:false
+
 })
 // Association 
 export default Equipe;

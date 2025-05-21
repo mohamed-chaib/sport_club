@@ -1,7 +1,6 @@
 import express from "express";
 import sequelize from "./config/db.js"
 import Manager from  "./models/manager.model.js"
-
 import Admin from "./models/admin.model.js";
 import Joueur from  "./models/joueur.model.js"
 import Staff from  "./models/staff.model.js"
@@ -18,6 +17,14 @@ import memberRoute from './routes/member.route.js'
 import Member from "./models/membre.model.js";
 import cookieParser from "cookie-parser";
 import adminRoute from './routes/admin.route.js'
+import express from 'express';
+import clubRoutes from './routes/club.routes.js';
+
+
+
+
+
+
 const app = express() 
 app.use(express.json())
 app.use(cookieParser())
@@ -29,7 +36,7 @@ app.use(cookieParser())
  // Routes 
   app.use('/api/admin',adminRoute)
   app.use('/api/member',memberRoute)
- 
+  app.use('/api', clubRoutes);
     try {
         await sequelize.sync()
         console.log("The connection has been created succesffuly")

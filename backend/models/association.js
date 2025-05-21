@@ -92,7 +92,7 @@ const setupAssociations = () => {
     Evenement.hasOne(Tournoi, { foreignKey: 'tournoi_id' });
     Tournoi.belongsTo(Evenement, { foreignKey: 'tournoi_id' });
 
-
+ 
 };
 
 export default setupAssociations;

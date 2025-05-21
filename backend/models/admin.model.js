@@ -16,14 +16,14 @@ class Admin extends Member {
         return res.json({ message: "User already exist" });
       }
 
-      const { nom, prenom, password, type, date_rec, id_equipe } = req.body;
+      const { nom, prenom,role, password, type, date_rec, id_equipe } = req.body;
       const t = await sequelize.transaction();
       const member = await Member.create(
         {
           nom,
           prenom,
           email,
-          role: "staff",
+          role,
           password,
         },
         {
@@ -69,14 +69,14 @@ class Admin extends Member {
         return res.json({ message: "User already exist" });
       }
 
-      const { nom, prenom, password } = req.body;
+      const { nom, prenom,role, password } = req.body;
       const t = await sequelize.transaction();
       const member = await Member.create(
         {
           nom,
           prenom,
           email,
-          role: "manager",
+          role,
           password,
         },
         {
@@ -119,6 +119,7 @@ class Admin extends Member {
         nom,
         prenom,
         password,
+        role,
         post,
         date_rec,
         numero,
@@ -133,7 +134,7 @@ class Admin extends Member {
           nom,
           prenom,
           email,
-          role: "joueur",
+          role,
           password,
         },
         {
@@ -154,31 +155,9 @@ class Admin extends Member {
           transaction: t,
         }
       );
-      console.log(
-        nom,
-        prenom,
-        password,
-        post,
-        date_rec,
-        numero,
-        id_equipe,
-        id_manager,
-        id_staff
-      );
+      
 
       await t.commit();
-      console.log(
-        nom,
-        prenom,
-        password,
-        post,
-        date_rec,
-        numero,
-        id_equipe,
-        id_manager,
-        id_staff
-      );
-
       return res.status(200).json({
         member: {
           id: member.id,
@@ -213,6 +192,7 @@ class Admin extends Member {
       const {
         nom,
         prenom,
+        role,
         password,
         type_coach,
         date_rec,
@@ -226,7 +206,7 @@ class Admin extends Member {
           nom,
           prenom,
           email,
-          role: "coache",
+          role,
           password,
         },
         {

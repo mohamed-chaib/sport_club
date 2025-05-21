@@ -11,6 +11,10 @@ Tournoi.init({
             key : 'id'
         }
     },
+    nom:{
+        type : DataTypes.STRING,
+        allowNull: false
+    },
     tour:{
         type : DataTypes.STRING,
         allowNull:false

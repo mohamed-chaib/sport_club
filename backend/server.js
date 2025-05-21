@@ -18,6 +18,12 @@ import memberRoute from './routes/member.route.js'
 import Member from "./models/membre.model.js";
 import cookieParser from "cookie-parser";
 import adminRoute from './routes/admin.route.js'
+import managerRoute from './routes/manager.route.js'
+import coacheRoute from './routes/coache.route.js'
+import joueurRoute from './routes/joueur.route.js'
+import evenementRoute from './routes/evenement.route.js'
+import entrinementRoute from './routes/entrinement.route.js'
+
 const app = express() 
 app.use(express.json())
 app.use(cookieParser())
@@ -27,13 +33,18 @@ app.use(cookieParser())
  setupAssociations()
 
  // Routes 
-  app.use('/api/admin',adminRoute)
-  app.use('/api/member',memberRoute)
+app.use('/api/member',memberRoute)
+app.use('/api/admin',adminRoute)
+app.use('/api/manager',managerRoute)
+app.use('/api/coache',coacheRoute)
+app.use('/api/joueur',joueurRoute)
+app.use('/api/evenement',evenementRoute)
+app.use('/api/entrinement',entrinementRoute)
+
  
     try {
-        await sequelize.sync()
-        console.log("The connection has been created succesffuly")
-  
+        await sequelize.sync();
+        console.log("The connection has been created succesffuly");
     } catch (error) {
         console.log("The connection  Unsuccesffuly : " + error.message)
     }

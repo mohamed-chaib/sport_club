@@ -93,7 +93,25 @@ export const login = async function (req, res) {
       console.log("there is an error "+err.message)
     }
   }
-
+  export const   getAllMembers = async (req,res)=>{
+    try {
+      const role = req.query.role;
+      const members = await Member.findAll({
+        where: role ? { role } : undefined, 
+        include:[
+          {model : Joueur },
+          {model : Coache },
+          {model : Staff },
+          {model : Manager },
+        ],
+        attributes:{exclude :['password']}
+        
+      })
+      return res.status(200).json(members)
+    } catch (error) {
+      
+    }
+  }
 
 // function to generate tokens
 const generateTokens = function (memberId,role){

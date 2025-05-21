@@ -1,19 +1,16 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
 class Evenement extends Model{
-   
+    
 }
 Evenement.init({
-    nom:{
-        type : DataTypes.STRING,
-        allowNull: false
-    },
+    
     type:{
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Tournoi,Match'),
         allowNull: false
     },
     date:{
-        type : DataTypes.DATE,
+        type : DataTypes.DATEONLY,
         allowNull : false
     },
     adversaire:{
@@ -21,7 +18,7 @@ Evenement.init({
         allowNull : false
     },
     score:{
-        type : DataTypes.INTEGER,
+        type : DataTypes.STRING,
         allowNull : false
     }
     

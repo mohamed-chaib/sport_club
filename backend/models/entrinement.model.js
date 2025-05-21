@@ -1,6 +1,16 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../config/db.js";
-class Entrinement extends Model{}
+class Entrinement extends Model{
+    static async getAllEntrinement(req,res){
+        try {
+            const entrinements = await Entrinement.findAll({          
+            })
+            return res.status(200).json(entrinements)
+          } catch (error) {
+          }
+    }
+
+}
 
 Entrinement.init({
     lieu:{
@@ -8,7 +18,7 @@ Entrinement.init({
         allowNull: false
     },
     type:{
-        type : DataTypes.STRING,
+        type : DataTypes.ENUM('Physique','Technique'),
         allowNull : false
     },
     time:{

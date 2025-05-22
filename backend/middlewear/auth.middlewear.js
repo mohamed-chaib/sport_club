@@ -34,5 +34,46 @@ export const adminRoute = async function (req,res,next){
         console.log("error in adminRoute middleware : " + error.message);
         res.status(500).json({ message: error.message });
     }
-    
+}
+
+export const managerRoute = async function (req,res,next){
+    try {
+        if (req.member && req.member.role==='manager') {
+            next()
+        }
+        else{
+            return res.status(403).json({message:'Access denied  - Manager Only'})
+        }
+    } catch (error) {
+        console.log("error in managerRoute middleware : " + error.message);
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const coacheRoute = async function (req,res,next){
+    try {
+        if (req.member && req.member.role==='coache') {
+            next()
+        }
+        else{
+            return res.status(403).json({message:'Access denied  - Coache Only'})
+        }
+    } catch (error) {
+        console.log("error in coacheRoute middleware : " + error.message);
+        res.status(500).json({ message: error.message });
+    }
+}
+
+export const staffRoute = async function (req,res,next){
+    try {
+        if (req.member && req.member.role==='staff') {
+            next()
+        }
+        else{
+            return res.status(403).json({message:'Access denied  - Staff Only'})
+        }
+    } catch (error) {
+        console.log("error in staffRoute middleware : " + error.message);
+        res.status(500).json({ message: error.message });
+    }
 }

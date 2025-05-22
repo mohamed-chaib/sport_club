@@ -28,7 +28,6 @@ Joueur.init(
     },
     date_rec: {
       type: DataTypes.DATEONLY,
-      unique: true,
     },
     // Other specific fields
   },

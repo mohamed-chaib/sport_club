@@ -113,7 +113,10 @@ class Admin extends Member {
     }
   }
   static async ajouterJoueur(req, res) {
+    let t;
+
     try {
+     t = await sequelize.transaction();
       const { email } = req.body;
       const userExist = await Member.findOne({ where: { email } });
       if (userExist) {
@@ -134,7 +137,6 @@ class Admin extends Member {
         id_staff,
       } = req.body;
 
-      const t = await sequelize.transaction();
       const member = await Member.create(
         {
           nom,
@@ -184,6 +186,7 @@ class Admin extends Member {
         },
       });
     } catch (error) {
+      t.rollback()
       console.log("error in :  ajouter joueur function : " + error.message);
       return res.status(500).json({ message: " Error ", error: error.message });
     }
@@ -289,7 +292,7 @@ class Admin extends Member {
   static async updateStaff(req, res) {
     try {
       const { id } = req.params;
-      const { email, nom, prenom, role, password, type, date_rec, id_equipe } = req.body;
+      const { email, nom, prenom, role, password, type, date_rec, id_equipe,avatar } = req.body;
   
       let member = await Member.findByPk(id);
       if (!member) {
@@ -304,7 +307,7 @@ class Admin extends Member {
       const t = await sequelize.transaction();
   
       member = await member.update(
-        { nom, prenom, email, role, password },
+        { nom, prenom, email, role, password ,avatar},
         { transaction: t }
       );
   
@@ -322,6 +325,7 @@ class Admin extends Member {
           prenom: member.prenom,
           email: member.email,
           role: member.role,
+          avatar:member.avatar,
           details: {
             type: staff.type,
             date_rec: staff.date_rec,
@@ -338,7 +342,7 @@ class Admin extends Member {
   static async updateCoache(req, res) {
     try {
       const { id } = req.params;
-      const { email, nom, prenom, role, password, type_coach, date_rec, id_equipe ,id_manager} = req.body;
+      const { email, nom, prenom, role, password, type_coach, date_rec, id_equipe ,id_manager,avatar} = req.body;
   
       let member = await Member.findByPk(id);
       if (!member) {
@@ -353,7 +357,7 @@ class Admin extends Member {
       const t = await sequelize.transaction();
   
       member = await member.update(
-        { nom, prenom, email, role, password },
+        { nom, prenom, email, role, password,avatar },
         { transaction: t }
       );
   
@@ -371,6 +375,7 @@ class Admin extends Member {
           prenom: member.prenom,
           email: member.email,
           role: member.role,
+          avatar: member.avatar,
           details: {
             type_coach: coache.type_coach,
             date_rec: coache.date_rec,
@@ -389,7 +394,7 @@ class Admin extends Member {
   static async updateManager(req, res) {
     try {
       const { id } = req.params;
-      const { email, nom, prenom, role, password, type_coach, date_rec, id_equipe ,id_manager} = req.body;
+      const { email, nom, prenom, role, password,avatar} = req.body;
   
       let member = await Member.findByPk(id);
       if (!member) {
@@ -403,7 +408,7 @@ class Admin extends Member {
   
   
       member = await member.update(
-        { nom, prenom, email, role, password }
+        { nom, prenom, email, role, password,avatar }
             );
   
       
@@ -415,6 +420,7 @@ class Admin extends Member {
           prenom: member.prenom,
           email: member.email,
           role: member.role,
+          avatar:member.avatar
         },
       });
   
@@ -426,7 +432,7 @@ class Admin extends Member {
   static async updateJoueur(req, res) {
     try {
       const { id } = req.params;
-      const { email, nom, prenom, role, password, post,numero, date_rec, id_equipe ,id_manager,id_staff} = req.body;
+      const { email, nom, prenom, role, password, post,numero, date_rec, id_equipe ,id_manager,id_staff,avatar} = req.body;
   
       let member = await Member.findByPk(id);
       if (!member) {
@@ -437,11 +443,11 @@ class Admin extends Member {
       if (!joueur) {
         return res.status(400).json({ message: "joueur does not exist" });
       }
-  
       const t = await sequelize.transaction();
-  
+      console.log(joueur.toJSON());
+
       member = await member.update(
-        { nom, prenom, email, role, password },
+        { nom, prenom, email, role, password ,avatar},
         { transaction: t }
       );
   
@@ -459,6 +465,7 @@ class Admin extends Member {
           prenom: member.prenom,
           email: member.email,
           role: member.role,
+          avatar :member.avatar,
           details: {
             post: joueur.post,
             numero :joueur.numero,
@@ -472,7 +479,8 @@ class Admin extends Member {
       });
   
     } catch (error) {
-      console.log(" Error in updateCoache:", error.message);
+      await t.rollback();
+      console.log(" Error in updateJoueur:", error.message);
       return res.status(500).json({ message: "Error", error: error.message });
     }
   }

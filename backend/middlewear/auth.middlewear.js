@@ -18,7 +18,6 @@ export const protectRoute = async function (req,res,next){
     }
 
     req.member=member
-    console.log(member)
     next()
 
 }

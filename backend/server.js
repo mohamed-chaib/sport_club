@@ -38,7 +38,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors());
 app.use(cors({
-  origin: '*', // allow all
+  origin: 'http://localhost:3000', // allow all
   credentials:true
 }));
 

@@ -6,7 +6,7 @@ class Evenement extends Model{
 Evenement.init({
     
     type:{
-        type : DataTypes.ENUM('Tournoi,Match'),
+        type : DataTypes.ENUM('Tournoi','Match'),
         allowNull: false
     },
     date:{

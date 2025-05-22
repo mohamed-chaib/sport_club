@@ -13,6 +13,7 @@ import Member from './membre.model.js';
 import Admin from './admin.model.js';
 import Match from './match.model.js';
 import Tournoi from './tournoi.model.js';
+import DossierMedical from './dossierMedical.model.js';
 
 // Set up all associations here
 const setupAssociations = () => {
@@ -92,7 +93,10 @@ const setupAssociations = () => {
     Evenement.hasOne(Tournoi, { foreignKey: 'tournoi_id' });
     Tournoi.belongsTo(Evenement, { foreignKey: 'tournoi_id' });
 
+    Joueur.hasOne(DossierMedical, { foreignKey: 'id_joueur' });
+    DossierMedical.belongsTo(Joueur, { foreignKey: 'id_joueur' });
 
+ 
 };
 
 export default setupAssociations;

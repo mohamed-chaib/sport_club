@@ -28,18 +28,22 @@ Member.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    avatar: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     sequelize,
     tableName: "member",
     timestamps:false,
     hooks: {
-      beforeCreate: async function (member, options) {
-        if (member.password) {
+      beforeSave: async function (member , options) {
+        if(member.changed('password')){
           const salt = await bcrypt.genSalt(10);
           member.password = await bcrypt.hash(member.password, salt);
         }
-      },
+      }
     },
   }
 );

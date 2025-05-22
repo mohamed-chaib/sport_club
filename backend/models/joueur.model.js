@@ -2,9 +2,7 @@
 import { DataTypes, Model, where } from "sequelize";
 import sequelize from "../config/db.js";
 import Member from "./membre.model.js";
-import Coache from "./coache.model.js";
-import Staff from "./staff.model.js";
-import Manager from "./manager.model.js";
+
 
 class Joueur extends Member {
   

@@ -27,6 +27,7 @@ import evenementRoute from './routes/evenement.route.js'
 import entrinementRoute from './routes/entrinement.route.js'
 import staffRoute from './routes/staff.route.js'
 import dotenv from 'dotenv'
+import cors from 'cors'
 dotenv.config()
 
 
@@ -35,7 +36,11 @@ dotenv.config()
 const app = express() 
 app.use(express.json())
 app.use(cookieParser())
-
+app.use(cors());
+app.use(cors({
+  origin: '*', // allow all
+  credentials:true
+}));
 
 // set up associations 
  setupAssociations()

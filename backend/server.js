@@ -38,7 +38,9 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors('*',{
   origin: 'http://localhost:3000', // allow all
-  credentials:true
+  credentials:true,
+  methods:['GET','POST','DELETE','OPTIONS','PUT','PATCH'],
+  allowHeaders:['Content-Type','Authorization']
 }));
 
 // set up associations 

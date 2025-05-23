@@ -30,6 +30,7 @@ import dotenv from 'dotenv'
 import equipeRoute from './routes/equipe.route.js'
 dotenv.config()
 
+const app = express() 
 
 
 app.use((req, res, next) => {
@@ -44,7 +45,6 @@ app.use((req, res, next) => {
 
   next();
 });
-const app = express() 
 app.use(express.json())
 app.use(cookieParser())
 

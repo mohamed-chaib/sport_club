@@ -109,7 +109,8 @@ export const login = async function (req, res) {
       })
       return res.status(200).json(members)
     } catch (error) {
-      
+      return res.status(500).json({message : "error : "+ error.message})
+
     }
   }
 

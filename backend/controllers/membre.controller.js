@@ -125,13 +125,13 @@ const setCookies = function(res, accessToken , refreshToken){
 res.cookie('accessToken',accessToken,{
   httpOnly :true, // prevents xss atack
   secure : process.env.NODE_ENV === 'Production', // use https only
-  sameSite : 'none', // prevents csrf attack
+  sameSite : 'Lax', // prevents csrf attack
   maxAge : 15*60*1000  // 15min
 })
 res.cookie('refreshToken',refreshToken,{
   httpOnly :true, // prevents xss atack
   secure : process.env.NODE_ENV === 'Production', // use https only
-  sameSite : 'none', // prevents csrf attack
+  sameSite : 'Lax', // prevents csrf attack
   maxAge : 7*24*60*60*1000  // 7 days
 })
 

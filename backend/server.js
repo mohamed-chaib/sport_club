@@ -32,10 +32,6 @@ dotenv.config()
 
 
 
-
-const app = express() 
-app.use(express.json())
-app.use(cookieParser())
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000"); 
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
@@ -48,6 +44,10 @@ app.use((req, res, next) => {
 
   next();
 });
+const app = express() 
+app.use(express.json())
+app.use(cookieParser())
+
 
 // set up associations 
  setupAssociations()

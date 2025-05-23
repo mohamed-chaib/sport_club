@@ -70,13 +70,7 @@ async function startServer() {
   
       await sequelize.sync(); 
       console.log('📦 Tables created (if not exist)');
-      await Member.create({
-        nom:'mohammed',
-        prenom:"mohammed",
-        email:"amar@gmail.com",
-        password:"123456",
-        role:"admin"
-      })
+     
       
 
       const PORT = process.env.PORT || 3000;

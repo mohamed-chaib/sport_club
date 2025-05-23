@@ -27,7 +27,7 @@ import evenementRoute from './routes/evenement.route.js'
 import entrinementRoute from './routes/entrinement.route.js'
 import staffRoute from './routes/staff.route.js'
 import dotenv from 'dotenv'
-import cors from 'cors'
+import equipeRoute from './routes/equipe.route.js'
 dotenv.config()
 
 
@@ -61,6 +61,7 @@ app.use('/api/joueur',joueurRoute)
 app.use('/api/evenement',evenementRoute)
 app.use('/api/entrinement',entrinementRoute)
 app.use('/api/staff',staffRoute)
+app.use('/api/equipes',equipeRoute)
 
 async function startServer() {
     try {

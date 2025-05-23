@@ -7,6 +7,8 @@ class Entrinement extends Model{
             })
             return res.status(200).json(entrinements)
           } catch (error) {
+            return res.status(400).json({message:"error : "+error.message})
+
           }
     }
 
